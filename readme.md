@@ -1,9 +1,12 @@
 # Automatic refinement for Stan models
 
-We reimplement the models from this [notebook](https://users.aalto.fi/~timonej3/case_study_num.html)
+We ~~reimplement~~ copy and adapt the models from [this notebook](https://users.aalto.fi/~timonej3/case_study_num.html)
 and fit them to 100 simulated datasets using our iterative and adaptive warm-up.
 
-Visualizations for the incremental fits can be found in the folder `figs/`.
+Visualizations for the incremental fits can be found in the folder [`figs/`](figs/).
+Stan files are located in the folder [`stan/`](stan/).
+The python script to generate fits+animations is [`refinement.py`](refinement.py).
+Secret sauce is not included because it's an embarrassing mess.
 
 Files are named as `{model}_{idx}_{goal}.gif` where
 
@@ -14,7 +17,7 @@ Files are named as `{model}_{idx}_{goal}.gif` where
 * `goal` is either `0.99` or `inf`, indicating the "final refinement goal".
 
 During warm-up, the accuracy of the approximation gets successively increased until
-`N_eff(IS)/N > goal` where `N_eff(IS)` is the estimate of the effective sample size
+`N_eff/N > goal` where `N_eff` is the estimate of the effective sample size
 due to importance sampling from the next more accurate posterior, or until
 some refinement limit is reached.
 
